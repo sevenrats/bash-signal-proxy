@@ -14,20 +14,20 @@ _do_signals() {
 trap "_do_signals SIGHUP" SIGHUP
 trap "_do_signals SIGINT" SIGINT
 trap "_do_signals SIGQUIT" SIGQUIT
-trap "_do_signals SIGILL" SIGILL
-trap "_do_signals SIGTRAP" SIGTRAP
-trap "_do_signals SIGABRT" SIGABRT
-trap "_do_signals SIGBUS" SIGBUS
-trap "_do_signals SIGFPE" SIGFPE
-trap "_do_signals SIGKILL" SIGKILL
+trap "_do_signals SIGILL" SIGILL # kernel signal for init, not forwarded
+trap "_do_signals SIGTRAP" SIGTRAP # kernel signal for init, not forwarded
+trap "_do_signals SIGABRT" SIGABRT # kernel signal for init, not forwarded
+trap "_do_signals SIGBUS" SIGBUS # kernel signal for init, not forwarded
+trap "_do_signals SIGFPE" SIGFPE # kernel signal for init, not forwarded
+#trap "_do_signals SIGKILL" SIGKILL # not possible to trap SIGKILL
 trap "_do_signals SIGUSR1" SIGUSR1
-trap "_do_signals SIGSEGV" SIGSEGV
+trap "_do_signals SIGSEGV" SIGSEGV # kernel signal for init, not forwarded
 trap "_do_signals SIGUSR2" SIGUSR2
 trap "_do_signals SIGPIPE" SIGPIPE
 trap "_do_signals SIGALRM" SIGALRM
 trap "_do_signals SIGTERM" SIGTERM
 trap "_do_signals SIGSTKFLT" SIGSTKFLT
-#trap "_do_signals SIGCHLD" SIGCHLD
+#trap "_do_signals SIGCHLD" SIGCHLD # sending SIGCHLD to your children is confusing
 trap "_do_signals SIGCONT" SIGCONT
 trap "_do_signals SIGSTOP" SIGSTOP
 trap "_do_signals SIGTSTP" SIGTSTP
@@ -41,7 +41,7 @@ trap "_do_signals SIGPROF" SIGPROF
 trap "_do_signals SIGWINCH" SIGWINCH
 trap "_do_signals SIGIO" SIGIO
 trap "_do_signals SIGPWR" SIGPWR
-trap "_do_signals SIGSYS" SIGSYS
+trap "_do_signals SIGSYS" SIGSYS # kernel signal for init, not forwarded
 trap "_do_signals SIGRTMIN" SIGRTMIN
 trap "_do_signals SIGRTMIN+1" SIGRTMIN+1
 trap "_do_signals SIGRTMIN+2" SIGRTMIN+2
