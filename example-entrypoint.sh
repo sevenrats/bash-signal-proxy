@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Proxy Signals
 sp_processes=("tinyproxy") # These are processes that will receive all signals that aren't overloaded
 . ./signalproxy.sh
@@ -13,13 +15,12 @@ _term() {
 trap _term SIGTERM
 trap _term SIGINT
 trap _term SIGQUIT
-#trap _term SIGKILL # You can't trap SIGKILL
 trap _term SIGHUP
 
 # Configure stuff
+    # e.g., ingest and template configs
 
 #Launch App
 wg-quick up wg0 &&
 tinyproxy -dc /etc/tinyproxy/tinyproxy.conf & \
 wait -n
-
